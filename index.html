@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<input placeholder="input message" id="text"/>
+<button onclick="foo()">Decrypt</button>
+<div id="result"></div>
+</body>
+<script>
+	function foo() {
+		var e = document.getElementById('text').value;
+		var k = 0;
+		e = e.replace(/[^a-zA-Z-0-9]/g, '').split('');
+		while (k < e.length - 1) {
+			if (e[k] === e[k + 1]) {
+				e.splice(k, 2)
+				if (k !== 0) {
+					k--;
+				}
+				else {
+					continue
+				}
+			}
+			else
+				k++
+		}
+		document.getElementById('result').innerText = 'result: ' + e.join('')
+	}
+
+</script>
+</html>
